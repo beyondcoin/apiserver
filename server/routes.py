@@ -7,6 +7,10 @@ from server import app
 def app_stats():
 	return jsonify(stats.info())
 
+@app.route('/ping')
+def ping():
+	return {'status': "Go beyond the impossible!"}
+
 @app.route('/')
 def frontend():
 	return render_template('index.html')

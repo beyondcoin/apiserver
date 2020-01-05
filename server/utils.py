@@ -19,10 +19,10 @@ def make_request(method, params=[]):
 		return dead_response()
 
 def reward(height):
-	halvings = height // 1050000
+	halvings = height // 840000
 	if halvings >= 64:
 		return 0
-	return int((50 * 100000000) // (2 ** halvings))
+	return int((50 * 84000000) // (2 ** halvings))
 
 def satoshis(value):
 	return int(value * math.pow(10, 8))

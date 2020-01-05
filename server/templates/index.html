@@ -113,7 +113,8 @@
 		<!-- Footer :3 -->
 		<footer class="mb-3">
 			<div class="container text-center">
-				Made with <span class="entypo heart text-danger"></span> by <a target="_blank" href="https://github.com/beyondcoin-project/apiserver">Beyondcoin</a>
+				<!--Made with <span class="entypo heart text-danger"></span> by <a target="_blank" href="https://github.com/beyondcoin-project/apiserver">Beyondcoin</a>-->
+				<a target="_blank" href="https://beyondcoin.io">Go beyond the impossible</a>
 			</div>
 		</footer>
 
@@ -121,15 +122,22 @@
 			var uri = window.location.protocol + '//' + window.location.host
 			var api = [
 				{
+					'name': '/ping',
+					'example': '/ping',
+					'description': 'This method returns the API server status.',
+					'method': 'GET',
+					'id': 'ping'
+				},
+				{
 					'name': '/info',
 					'example': '/info',
-					'description': 'This method return current info about Beyondcoin network.',
+					'description': 'This method returns the current info about the Beyondcoin network.',
 					'method': 'GET',
 					'id': 'info'
 				}, {
 					'name': '/height/int:height',
 					'example': '/height/1',
-					'description': 'This method return block info by given height.',
+					'description': 'This method returns the block info by given height.',
 					'base': '/height/',
 					'method': 'GET',
 					'id': 'height',
@@ -147,8 +155,8 @@
 					]
 				}, {
 					'name': '/block/string:hash',
-					'example': '/block/00002c0955d6ef303eef57425dcd882bd60074f2d70d0bf9c546e958bff451bf',
-					'description': 'This method return block info by given hash.',
+					'example': '/block/5e3277b2f6d988288e2acda68d4894d3b62391dfd7f475c553592954c743f7a5',
+					'description': 'This method returns the block info by given hash.',
 					'base': '/block/',
 					'method': 'GET',
 					'id': 'block',
@@ -156,7 +164,7 @@
 						{
 							'title': 'hash',
 							'description': 'Block hash',
-							'example': '00002c0955d6ef303eef57425dcd882bd60074f2d70d0bf9c546e958bff451bf',
+							'example': '5e3277b2f6d988288e2acda68d4894d3b62391dfd7f475c553592954c743f7a5',
 							'key': true
 						}, {
 							'title': 'offset',
@@ -166,8 +174,8 @@
 					]
 				}, {
 					'name': '/header/string:hash',
-					'example': '/header/00002c0955d6ef303eef57425dcd882bd60074f2d70d0bf9c546e958bff451bf',
-					'description': 'This method return block header by given hash.',
+					'example': '/header/5e3277b2f6d988288e2acda68d4894d3b62391dfd7f475c553592954c743f7a5',
+					'description': 'This method returns the block header by given hash.',
 					'base': '/header/',
 					'method': 'GET',
 					'id': 'header',
@@ -175,14 +183,14 @@
 						{
 							'title': 'hash',
 							'description': 'Header hash',
-							'example': '00002c0955d6ef303eef57425dcd882bd60074f2d70d0bf9c546e958bff451bf',
+							'example': '5e3277b2f6d988288e2acda68d4894d3b62391dfd7f475c553592954c743f7a5',
 							'key': true
 						}
 					]
 				}, {
 					'name': '/range/int:height',
 					'example': '/range/100?offset=3',
-					'description': 'This method return range of blocks staring from certain height.',
+					'description': 'This method returns the range of blocks staring from a certain height.',
 					'base': '/range/',
 					'method': 'GET',
 					'id': 'range',
@@ -202,7 +210,7 @@
 				}, {
 					'name': '/balance/string:address',
 					'example': '/balance/B7BqHyyrB9h7SJd8zpMpLhUHqQEVVdsUai',
-					'description': 'This method return address balance.',
+					'description': 'This method returns the address balance.',
 					'base': '/balance/',
 					'method': 'GET',
 					'id': 'balance',
@@ -217,7 +225,7 @@
 				}, {
 					'name': '/mempool/string:address',
 					'example': '/mempool/B7BqHyyrB9h7SJd8zpMpLhUHqQEVVdsUai',
-					'description': 'This method return address mempool transactions.',
+					'description': 'This method returns the address mempool transactions.',
 					'base': '/mempool/',
 					'method': 'GET',
 					'id': 'mempool',
@@ -232,7 +240,7 @@
 				}, {
 					'name': '/unspent/string:address',
 					'example': '/unspent/B7BqHyyrB9h7SJd8zpMpLhUHqQEVVdsUai?amount=1',
-					'description': 'This method return address unspent outputs.',
+					'description': 'This method returns the address unspent outputs.',
 					'base': '/unspent/',
 					'method': 'GET',
 					'id': 'unspent',
@@ -252,7 +260,7 @@
 				}, {
 					'name': '/history/string:address',
 					'example': '/history/B7BqHyyrB9h7SJd8zpMpLhUHqQEVVdsUai',
-					'description': 'This method return list of address transaction hashes.',
+					'description': 'This method returns a list of the address transaction hashes.',
 					'base': '/history/',
 					'method': 'GET',
 					'id': 'history',
@@ -271,8 +279,8 @@
 					]
 				}, {
 					'name': '/transaction/string:hash',
-					'example': '/transaction/60c1e4973650dd2536e25e17d97a5dfcdd0d0081a2ebe218bdbd302de29e7977',
-					'description': 'This method return info about transaction.',
+					'example': '/transaction/e1f555a2dff2392764a5d8a28d3933d773e864d4befcc736cf9e2f9c1cb509dc',
+					'description': 'This method returns info about the transaction.',
 					'base': '/transaction/',
 					'method': 'GET',
 					'id': 'transaction',
@@ -280,32 +288,32 @@
 						{
 							'title': 'hash',
 							'description': 'Transaction hash',
-							'example': '60c1e4973650dd2536e25e17d97a5dfcdd0d0081a2ebe218bdbd302de29e7977',
+							'example': 'e1f555a2dff2392764a5d8a28d3933d773e864d4befcc736cf9e2f9c1cb509dc',
 							'key': true
 						}
 					]
 				}, {
 					'name': '/mempool',
 					'example': '/mempool',
-					'description': 'This method return info about mempool.',
+					'description': 'This method returns info about the mempool.',
 					'method': 'GET',
 					'id': 'mempool-info'
 				}, {
 					'name': '/supply',
 					'example': '/supply',
-					'description': 'This method return info about current coins supply.',
+					'description': 'This method returns info about the current coins supply.',
 					'method': 'GET',
 					'id': 'supply'
 				}, {
 					'name': '/fee',
 					'example': '/fee',
-					'description': 'This method return recomended transaction fee.',
+					'description': 'This method returns the recomended transaction fee.',
 					'method': 'GET',
 					'id': 'fee'
 				}, {
 					'name': '/decode/string:raw',
-					'example': '/decode/01000000041c894229849ff3c38e8bc24e5da2ac8cdfb0e39dc68d7fb61e5638f8e7dac191000000006b48304502210080f5bcd93702c7fd0046b2d29932c328b3b38dd34fce43aa2e21cfdaed617e3902202fbdf643dad533bd3afcf3e097bb6b68265020ca7331a1e6007dd7cb4f889c5401210348bf6e79eb1892a7556eadf236481e785aaa9d839c308bc4f1e0b1c695a8d5d9ffffffff5f35b68ba88d6fb865db3df7389d2b216a9aead4378a143c8d9cc63ee63b16f7000000006b483045022100f74d347046db1fc3f717ff0ebb41f0dd93ca5513c8d849a70bdecaf1807e968002202114c780de8c3e44472524a834fe1bc0bf64780562edb997fbeca2ed916a86e601210348bf6e79eb1892a7556eadf236481e785aaa9d839c308bc4f1e0b1c695a8d5d9ffffffffce21ef6d4ead73eb37f70e8b46c771dd17d911316e31ad17b98f663f830f1a5c010000006a47304402202327c9e1f59736ec7219e1afedddcb0a30ceda2dbd0ddae2fcd8119a7668ed0802207de3a604e1b8e03d2d26ed6f2184020d324d0166ef4087971018976ddd79455e01210348bf6e79eb1892a7556eadf236481e785aaa9d839c308bc4f1e0b1c695a8d5d9ffffffff2a363fbaae21b65780f7ada5148d227bb9b5fc29fde6e0f7001af159384459bf000000006b483045022100e6a90357cc9438af9ffa152438d2ada0d55dc797dd5f7440555e0d389081308002200367642a487c16066daf4963719818215ad674498db7d2feaaab2a6e746cd80b01210348bf6e79eb1892a7556eadf236481e785aaa9d839c308bc4f1e0b1c695a8d5d9ffffffff0300407a10f35a00001976a9144cec0c819fdc76dc5be7528892bd1c3f3197d3d888ac91d83191a80000001976a9144cec0c819fdc76dc5be7528892bd1c3f3197d3d888ac00ca9a3b000000001976a914a626b7d1065e02e90b7ef5c5f71ed1431fd5a95d88ac00000000',
-					'description': 'This method return decoded info about transaction.',
+					'example': '/decode/02000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0351010dffffffff0200f2052a010000001976a914a2e1b0e72f2ade66cce203ee54d0d548ddfd21d188ac0000000000000000266a24aa21a9ede2f61c3f71d1defd3fa999dfa36953755c690689799962b48bebd836974e8cf900000000',
+					'description': 'This method returns decoded info about a transaction.',
 					'base': '/decode/',
 					'method': 'GET',
 					'id': 'decode',
@@ -313,18 +321,18 @@
 						{
 							'title': 'transaction',
 							'description': 'Signed transaction',
-							'example': '01000000041c894229849ff3c38e8bc24e5da2ac8cdfb0e39dc68d7fb61e5638f8e7dac191000000006b48304502210080f5bcd93702c7fd0046b2d29932c328b3b38dd34fce43aa2e21cfdaed617e3902202fbdf643dad533bd3afcf3e097bb6b68265020ca7331a1e6007dd7cb4f889c5401210348bf6e79eb1892a7556eadf236481e785aaa9d839c308bc4f1e0b1c695a8d5d9ffffffff5f35b68ba88d6fb865db3df7389d2b216a9aead4378a143c8d9cc63ee63b16f7000000006b483045022100f74d347046db1fc3f717ff0ebb41f0dd93ca5513c8d849a70bdecaf1807e968002202114c780de8c3e44472524a834fe1bc0bf64780562edb997fbeca2ed916a86e601210348bf6e79eb1892a7556eadf236481e785aaa9d839c308bc4f1e0b1c695a8d5d9ffffffffce21ef6d4ead73eb37f70e8b46c771dd17d911316e31ad17b98f663f830f1a5c010000006a47304402202327c9e1f59736ec7219e1afedddcb0a30ceda2dbd0ddae2fcd8119a7668ed0802207de3a604e1b8e03d2d26ed6f2184020d324d0166ef4087971018976ddd79455e01210348bf6e79eb1892a7556eadf236481e785aaa9d839c308bc4f1e0b1c695a8d5d9ffffffff2a363fbaae21b65780f7ada5148d227bb9b5fc29fde6e0f7001af159384459bf000000006b483045022100e6a90357cc9438af9ffa152438d2ada0d55dc797dd5f7440555e0d389081308002200367642a487c16066daf4963719818215ad674498db7d2feaaab2a6e746cd80b01210348bf6e79eb1892a7556eadf236481e785aaa9d839c308bc4f1e0b1c695a8d5d9ffffffff0300407a10f35a00001976a9144cec0c819fdc76dc5be7528892bd1c3f3197d3d888ac91d83191a80000001976a9144cec0c819fdc76dc5be7528892bd1c3f3197d3d888ac00ca9a3b000000001976a914a626b7d1065e02e90b7ef5c5f71ed1431fd5a95d88ac00000000',
+							'example': '02000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0351010dffffffff0200f2052a010000001976a914a2e1b0e72f2ade66cce203ee54d0d548ddfd21d188ac0000000000000000266a24aa21a9ede2f61c3f71d1defd3fa999dfa36953755c690689799962b48bebd836974e8cf900000000',
 							'key': true
 						}
 					]
 				}, {
 					'name': '/broadcast',
 					'example': '/broadcast',
-					'description': 'This method broadcast raw signed transaction to Beyondcoin network.',
+					'description': 'This method broadcasts a raw signed transaction to the Beyondcoin network.',
 					'method': 'POST',
 					'id': 'broadcast',
 					'response': {
-						'result': 'e6dc2ebf8fa3d62f6cd5fa78f8994946d6df388d879afd5b81ff6fd5b383ba89',
+						'result': 'e1f555a2dff2392764a5d8a28d3933d773e864d4befcc736cf9e2f9c1cb509dc',
 						'error': null,
 						'id': 'api-server'
 					},
