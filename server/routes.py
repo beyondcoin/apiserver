@@ -1,5 +1,7 @@
+import time
 from flask import jsonify, render_template
 from server import stats
+#from methods import general
 from server import utils
 from server import app
 
@@ -7,9 +9,13 @@ from server import app
 def app_stats():
 	return jsonify(stats.info())
 
+@app.route('/info')
+def app_info():
+	return jsonify(general.info())
+
 @app.route('/ping')
 def ping():
-	return {'status': "Go beyond the impossible!"}
+	return {'time': int(time.time()), 'result': {'code': "200",'status': "Go beyond the impossible!"}}
 
 @app.route('/')
 def frontend():
@@ -17,4 +23,4 @@ def frontend():
 
 @app.errorhandler(404)
 def page_404(error):
-	return jsonify(utils.dead_response('Method not found'))
+	return jsonify(utils.dead_response('Incorrect path. Please check http://api.beyondcoin.io/'))
