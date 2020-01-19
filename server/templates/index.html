@@ -13,6 +13,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
 		<style>
 			html {
@@ -22,10 +23,17 @@
 				min-height: 100%;
 			}
 			body {
+				font-family: 'Source Sans Pro', sans-serif;
 				padding-top: 75px;
 				padding-bottom: 56px;
 				position: relative;
 			}
+			/*#logo {
+				max-width: 30px;
+				max-height: 30px;
+				margin-top: -5px;
+				margin-right: 5px;
+			}*/
 			#supply {
 				cursor: pointer;
 			}
@@ -140,6 +148,13 @@
 					'description': 'This method returns the server status.',
 					'method': 'GET',
 					'id': 'stat'
+				},
+				{
+					'name': '/price',
+					'example': '/price',
+					'description': 'This method returns the current price of Beyondcoin.',
+					'method': 'GET',
+					'id': 'price'
 				},
 				{
 					'name': '/info',

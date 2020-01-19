@@ -1,17 +1,13 @@
 import time
 from flask import jsonify, render_template
 from server import stats
-#from methods import general
+##from methods import general
 from server import utils
 from server import app
 
 @app.route('/stats')
 def app_stats():
 	return jsonify(stats.info())
-
-@app.route('/info')
-def app_info():
-	return jsonify(general.info())
 
 @app.route('/ping')
 def ping():

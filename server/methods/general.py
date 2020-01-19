@@ -19,31 +19,54 @@ class General():
 			data['result'].pop('warnings')
 			data['result'].pop('size_on_disk')
 
+			nethash = utils.make_request('getnetworkhashps', [120, data['result']['blocks']])
+			if nethash['error'] is None:
+				data['result']['nethash'] = int(nethash['result'])
+
 		return data
 
 	@classmethod
 	@cache.memoize(timeout=config.cache)
 	def supply(cls):
-		supply = 0
 		data = utils.make_request('getblockchaininfo')
 		height = data['result']['blocks']
-		for height in range(0, height + 1):
-			supply += utils.reward(height)
+
+		calc_height = height
+
+		reward = utils.satoshis(50)
+		halvings = 840000
+		halvings_count = 0
+		supply = reward
+
+		while calc_height > halvings:
+			total = halvings * reward
+			reward = reward / 2
+			calc_height = calc_height - halvings
+			halvings_count += 1
+
+			supply += total
+
+		supply = supply + calc_height * reward
 
 		return {
-			'supply': supply,
-			'mining': supply,
+			'halvings': int(halvings_count),
+			'supply': int(supply),
 			'height': height
 		}
 
 	@classmethod
 	def fee(cls):
-		data = utils.make_request('estimatesmartfee', [6])
+		#data = utils.make_request('estimatesmartfee', [6])
 
-		if data['error'] is None:
-			data['result']['feerate'] = utils.satoshis(data['result']['feerate'])
+		#if data['error'] is None:
+		#	data['result']['feerate'] = utils.satoshis(data['result']['feerate'])
 
-		return data
+		#return data
+
+		return utils.response({
+			'feerate': utils.satoshis(0.001),
+			'blocks': 6
+		})
 
 	@classmethod
 	def mempool(cls):

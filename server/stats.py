@@ -1,6 +1,5 @@
 from datetime import timedelta
 import server as state
-import time
 
 def socket(func):
 	def wrapper(*args, **kwargs):
@@ -19,7 +18,6 @@ def rest(func):
 def info():
 	uptime = timedelta(seconds=time.monotonic() - state.start_time)
 	return {
-		'time': int(time.time()),
 		'uptime': str(uptime),
 		'subscriptions': {
 			'connections': state.connections,
