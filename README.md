@@ -26,7 +26,7 @@ debug = True
 
 Then run 'python app.py` to start, we recommend to use nginx as a reverse proxy for production environment.
 
-Responce have following fields:
+Response have following fields:
 
 `result`: list or object which contains requested data
 `error`: this field contains error message in case something went wrong
@@ -37,6 +37,70 @@ P.s. keep in mind, that all amounts in this API should be in **Satoshis**.
 ## Methods
 --------------
 
+### /ping
+
+This method returns the API server status.
+
+Params: none
+
+Request: https://api.beyondcoin.io/ping
+
+Response:
+```
+{
+   "result": {
+      "code": "200",
+      "status": "Go beyond the impossible!"
+   },
+   "time": 1579470630
+}
+```
+
+### /stats
+
+This method returns the server status.
+
+Params: none
+
+Request: https://api.beyondcoin.io/stats
+
+Response:
+```
+{
+   "requests": {
+      "rest": 1,
+      "socket": 0
+   },
+   "subscriptions": {
+      "connections": 0,
+      "rooms": 0,
+      "subscribers": 0
+   },
+   "time": 1579470630,
+   "uptime": "0:00:03.710791"
+}
+```
+
+### /price
+
+This method returns the current price of Beyondcoin.
+
+Params: none
+
+Request: https://api.beyondcoin.io/price
+
+Response:
+```
+{
+   "error": null,
+   "id": "api-server",
+   "result": {
+      "usd": 0.00193507,
+      "btc": 2.24e-7
+   }
+}
+```
+
 ### /info
 
 This method return current info about Beyondcoin blockchain.
@@ -45,21 +109,21 @@ Params: none
 
 Request: https://api.beyondcoin.io/info
 
-Responce:
+Response:
 ```
 {
-    "result": {
-        "chain": "main",
-        "blocks": 3568,
-        "headers": 3568,
-        "bestblockhash": "a7390c667198e96e88e55965d9af81c27ccc7b858cc3de07b623d6a89da7508d",
-        "difficulty": 0.02024649845405542,
-        "mediantime": 1570818535,
-        "chainwork": "000000000000000000000000000000000000000000000000000000275ae68172",
-        "reward": 54734486
-    },
-    "error": null,
-    "id": "api-server"
+   "result": {
+      "chain": "main",
+      "blocks": 3568,
+      "headers": 3568,
+      "bestblockhash": "a7390c667198e96e88e55965d9af81c27ccc7b858cc3de07b623d6a89da7508d",
+      "difficulty": 0.02024649845405542,
+      "mediantime": 1570818535,
+      "chainwork": "000000000000000000000000000000000000000000000000000000275ae68172",
+      "reward": 54734486
+   },
+   "error": null,
+   "id": "api-server"
 }
 ```
 
@@ -73,7 +137,7 @@ Params:
 
 Request: https://api.beyondcoin.io/height/172238
 
-Responce:
+Response:
 ```
 {
    "error":null,
@@ -113,7 +177,7 @@ Params:
 
 Request: https://api.beyondcoin.io/block/00002c0955d6ef303eef57425dcd882bd60074f2d70d0bf9c546e958bff451bf
 
-Responce:
+Response:
 ```
 {
    "result":{
@@ -152,7 +216,7 @@ Params: none
 
 Request: https://api.beyondcoin.io/header/00002c0955d6ef303eef57425dcd882bd60074f2d70d0bf9c546e958bff451bf
 
-Responce:
+Response:
 ```
 {
    "result":{
@@ -192,7 +256,7 @@ Params:
 
 Request: https://api.beyondcoin.io/range/5
 
-Responce:
+Response:
 ```
 {
    "error":null,
@@ -353,7 +417,7 @@ Params: none
 
 Request: https://api.beyondcoin.io/balance/Br3zKKzphGcQGAMTJ7m63Yop2mC
 
-Responce:
+Response:
 ```
 {
    "result":{
@@ -374,7 +438,7 @@ Params: none
 
 Request: https://api.beyondcoin.io/mempool/CH5AtGquaM3kTjdUxLKWZMcVMdsMWgT8Vg
 
-Responce:
+Response:
 ```
 {
    "error":null,
@@ -402,7 +466,7 @@ Params:
 
 Request: https://api.beyondcoin.io/unspent/B7BqHyyrB9h7SJd8zpMpLhUHqQEVVdsUai
 
-Responce:
+Response:
 ```
 {
    "result":[
@@ -435,7 +499,7 @@ Params:
 
 Request: https://api.beyondcoin.io/history/B7BqHyyrB9h7SJd8zpMpLhUHqQEVVdsUai
 
-Responce:
+Response:
 ```
 {
    "error":null,
@@ -461,7 +525,7 @@ Params: none
 
 Request: https://api.beyondcoin.io/transaction/d35cfaf61916069290786749efff5fd47d86d98962147eda69293f34033c39e4
 
-Responce:
+Response:
 ```
 {
    "result":{
@@ -606,7 +670,7 @@ Params: none
 
 Request: https://api.beyondcoin.io/decode/02000000040d6d9efdae740c44633a31544f5be9c83b8026f711a854c36631f3b9a5989879100000006b483045022100c13917451e11e8259f26fa996b836c1ad89dd952e79a3b4028af3f214fb104670220069b4eb138dea01d47c662d148524405137956f8abc7318e1220adac06c2be7a0121039ddf4e973c0d32c973f296d1786874661f684dd8bf85da151827ae7c4e67699afeffffff72be6490b76ce98c0b50485fe759384b6431c395da972d87a41d6055ae76a0dd000000006a47304402206c720de410c98af48a2ef99ef2f59738f413fe0a704cd665c9a81c1d7578c0590220255bdca55a795484526129fd25b39ec3d5247b649d3db3590e6ccd099f8f1aa90121025180b54ba0f01fc649780ed87264aea23f07bc3fe1cd12a173a792099920ac82feffffff82b31da2202f8bd4f7ef404333970528f811b27bbb856061beaecbae28c280e0000000006b483045022100b769e84ddc4b626bfcec1aab5e3b75ff5bdd8077c7a1dea1cf1191a1200be0da02205f12f3068fd7ef8d39f040a596adf5acb94a11bd055c362ca1a83e38d5d2a27c0121037815f214a02873ecfd6e0de8b8bcb46ce256661e103f42511fda1dbd62e1773cfefffffffbec787b2cded743f7f0147d286b3a26618018f544e28755ef95a433b06bf1c7030000006b483045022100d06010413f7af4893b1a8254ebc9ac95a81e61122fa341a491b86151ce4a053b02200f5946a687ede1e8d4737756e6ea5977443c8959fd52f34e4fa011d119eb4c7301210354c7ae93915c06e6f64f7469e1fd6ee5cab7c9ef9df9c1f12d1072927cad0e2bfeffffff0238c528690c0400001976a9144cec0c819fdc76dc5be7528892bd1c3f3197d3d888acadb91800000000001976a9146e4f50755c840efa33548d0a57c9f7381b57d05888ac67a10200
 
-Responce:
+Response:
 ```
 {
    "result":{
@@ -696,7 +760,7 @@ Params: none
 
 Request: https://api.beyondcoin.io/mempool
 
-Responce:
+Response:
 ```
 {
    "result":{
@@ -723,7 +787,7 @@ Params: none
 
 Request: https://api.beyondcoin.io/supply
 
-Responce:
+Response:
 ```
 {
    "error":null,
@@ -744,7 +808,7 @@ Params: none
 
 Request: https://api.beyondcoin.io/fee
 
-Responce:
+Response:
 ```
 {
    "result":{
@@ -767,7 +831,7 @@ Params:
 Request: https://api.beyondcoin.io/broadcast
 `raw`: `01000000010175b5e960976058cd81d62893246b54fd52a0f074ec63c4fafd9f460e779e27010000006b48304502210092ac0108461dec3d90c31781ccac868ebb876a2e09939793581d20d733369c6002207473120c0150e1777ee700da88b833ecfb1805cd629a18d29509fad0d03a97970121021121f5e63f7537a6c8e8881b0c54c5914cd117e775c3be0486205c45eced9117fdffffff0210270000000000001976a9147fd7e409fc303e407a933b3392aa197c66348da688ac880d0100000000001976a914436072406255f648da990ea1fa902cb98c4b6e2088ac00000000`
 
-Responce:
+Response:
 ```
 {
     "result": "8d0f52a1177c7a954cf4f952532c49c8d55f9437539b544d92f83c14e1929950",
