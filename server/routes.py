@@ -4,6 +4,7 @@ from server import stats
 ##from methods import general
 from server import utils
 from server import app
+import config
 
 @app.route('/stats')
 def app_stats():

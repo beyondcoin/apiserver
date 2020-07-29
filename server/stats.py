@@ -23,7 +23,7 @@ def info():
 		'subscriptions': {
 			'connections': state.connections,
 			'subscribers': len(state.subscribers),
-			'rooms': len(state.rooms)
+			'watch': len(state.watch_addresses)
 		},
 		'requests': {
 			'socket': state.socket_counter,
